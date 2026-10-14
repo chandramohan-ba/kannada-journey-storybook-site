@@ -1,0 +1,662 @@
+/* =====================================================================
+   KANNADA JOURNEY: STORYBOOK STYLES (ONE FILE FOR ALL SEVEN PAGES)
+   Paste this ONCE at the very END of your existing styles.css.
+   If you pasted any earlier storybook CSS, delete that first, so the
+   storybook styles appear only once.
+   Every class starts with .sb- so nothing clashes with your own CSS.
+   ===================================================================== */
+
+/* =====================================================================
+   KANNADA JOURNEY: STORYBOOK PROGRAMS PAGE
+   Paste this at the END of your existing styles.css.
+   Every class starts with .sb- so nothing clashes with your other pages.
+   Change the colours in :root to restyle the whole book.
+   ===================================================================== */
+
+:root {
+  --sb-desk:      #3a2210;
+  --sb-desk-2:    #281607;
+  --sb-paper:     #f2dfb3;
+  --sb-paper-2:   #e8cf98;
+  --sb-ink:       #3a2210;
+  --sb-ink-soft:  #6b4a2b;
+  --sb-red:       #b5301d;
+  --sb-gold:      #dd9b16;
+  --sb-green:     #44703a;
+  --sb-indigo:    #27386b;
+  --sb-display:   "Yatra One", "Noto Serif Kannada", Georgia, serif;
+  --sb-body-font: "Lora", "Noto Serif Kannada", Georgia, serif;
+}
+
+.sb-body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--sb-ink);
+  font-family: var(--sb-body-font);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(221,155,22,.18), transparent 60%),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 2px, transparent 2px 7px),
+    linear-gradient(var(--sb-desk), var(--sb-desk-2));
+}
+.sb-body *, .sb-body *::before, .sb-body *::after { box-sizing: border-box; }
+
+/* ---------- Top bar ---------- */
+.sb-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem 1.5rem;
+  padding: .8rem clamp(1rem, 4vw, 2.5rem);
+  background: rgba(20, 10, 3, .55);
+  border-bottom: 2px solid var(--sb-gold);
+}
+.sb-brand {
+  font-family: var(--sb-display);
+  font-size: 1.35rem;
+  color: var(--sb-gold);
+  text-decoration: none;
+}
+.sb-topnav { display: flex; flex-wrap: wrap; gap: .25rem 1.1rem; }
+.sb-topnav a {
+  color: #f2dfb3;
+  text-decoration: none;
+  font-size: .95rem;
+  padding: .25rem 0;
+  border-bottom: 2px solid transparent;
+}
+.sb-topnav a:hover,
+.sb-topnav a[aria-current="page"] { border-bottom-color: var(--sb-gold); }
+.sb-topbar a:focus-visible { outline: 3px solid var(--sb-gold); outline-offset: 3px; }
+
+/* ---------- Stage ---------- */
+.sb-stage {
+  flex: 1;
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(.5rem, 3vw, 1.5rem) 1rem;
+}
+
+/* ---------- Book ---------- */
+.sb-book {
+  position: relative;
+  border-radius: 10px;
+  background: var(--sb-paper);
+  box-shadow:
+    0 0 0 6px #7a4a22,
+    0 0 0 9px var(--sb-gold),
+    0 0 0 11px #7a4a22,
+    0 30px 60px rgba(0,0,0,.55);
+  outline: none;
+}
+
+.sb-spread {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: 560px;
+  perspective: 1800px;
+  position: relative;
+}
+.sb-spread.is-active { display: grid; }
+
+.sb-spread::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 50%;
+  width: 56px;
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    transparent, rgba(80,45,10,.28) 45%, rgba(80,45,10,.4) 50%, rgba(80,45,10,.28) 55%, transparent);
+}
+
+.sb-page {
+  position: relative;
+  padding: clamp(1.2rem, 3vw, 2.2rem);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,.35), transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(150,95,30,.18), transparent 50%),
+    var(--sb-paper);
+}
+.sb-page--art {
+  border-radius: 10px 0 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sb-page--text {
+  border-radius: 0 10px 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .9rem;
+  transform-origin: left center;
+  backface-visibility: hidden;
+}
+
+/* inner ruled border */
+.sb-page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 2px solid var(--sb-red);
+  outline: 1px solid var(--sb-red);
+  outline-offset: -7px;
+  border-radius: 6px;
+  pointer-events: none;
+  opacity: .55;
+}
+
+/* ---------- Art ---------- */
+.sb-art {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.sb-art svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 480 / 440;
+  border-radius: 10px;
+  border: 3px solid var(--sb-ink);
+  box-shadow: 0 6px 16px rgba(58,34,16,.35);
+}
+.sb-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 3px solid var(--sb-ink);
+  box-shadow: 0 6px 16px rgba(58,34,16,.35);
+}
+
+/* Shown only if storybook.js has not loaded: tells you what is wrong */
+.sb-art__fallback {
+  margin: 0;
+  padding: 2rem 1.2rem;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--sb-ink-soft);
+  border: 3px dashed var(--sb-red);
+  border-radius: 10px;
+  background: rgba(181,48,29,.07);
+}
+
+.sb-svg-text { font-family: var(--sb-body-font); }
+
+/* ---------- Typography ---------- */
+.sb-kicker,
+.sb-chapter {
+  margin: 0;
+  font-family: var(--sb-display);
+  font-size: 1.05rem;
+  color: var(--sb-red);
+  letter-spacing: .04em;
+}
+.sb-chapter::before { content: "❖ "; color: var(--sb-gold); }
+
+.sb-title,
+.sb-heading {
+  margin: 0;
+  font-family: var(--sb-display);
+  font-weight: 400;
+  color: var(--sb-indigo);
+  line-height: 1.2;
+}
+.sb-title   { font-size: clamp(1.45rem, 3vw, 2.05rem); }
+.sb-heading { font-size: clamp(1.4rem, 2.8vw, 2rem); }
+.sb-heading__main { display: block; }
+.sb-heading__sub {
+  display: block;
+  margin-top: .3rem;
+  font-family: var(--sb-body-font);
+  font-style: italic;
+  font-size: .62em;
+  color: var(--sb-red);
+}
+
+.sb-lead {
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  line-height: 1.65;
+  max-width: 36em;
+}
+.sb-focus {
+  margin: 0;
+  font-size: .92rem;
+  line-height: 1.5;
+  color: var(--sb-ink-soft);
+}
+.sb-focus strong { color: var(--sb-green); }
+
+/* Narrator scroll */
+.sb-scroll {
+  position: relative;
+  padding: .7rem 1.1rem;
+  background: #fbefc8;
+  border-top: 3px solid #b8923f;
+  border-bottom: 3px solid #b8923f;
+  border-radius: 6px;
+  box-shadow: inset 0 0 14px rgba(150,95,30,.2);
+  max-width: 36em;
+}
+.sb-scroll p { margin: 0; font-style: italic; font-size: .95rem; line-height: 1.6; color: var(--sb-ink-soft); }
+.sb-scroll .sb-scroll__label {
+  margin-bottom: .2rem;
+  font-style: normal;
+  font-family: var(--sb-display);
+  font-size: .9rem;
+  color: var(--sb-red);
+  letter-spacing: .04em;
+}
+
+/* Dialogue */
+.sb-dialogue { display: grid; gap: .7rem; max-width: 36em; }
+.sb-line {
+  position: relative;
+  padding: .65rem .9rem .7rem;
+  border: 2px solid var(--sb-ink);
+  border-radius: 14px;
+  line-height: 1.55;
+  font-size: .96rem;
+}
+.sb-line p { margin: 0; }
+.sb-who {
+  display: inline-block;
+  margin-bottom: .2rem;
+  padding: .05rem .6rem;
+  font-family: var(--sb-display);
+  font-size: .85rem;
+  color: #fff7e2;
+  border-radius: 999px;
+}
+.sb-line--anand { background: #fff7e2; margin-right: 1.5rem; border-bottom-left-radius: 2px; }
+.sb-line--anand .sb-who { background: var(--sb-red); }
+.sb-line--rahul { background: #e3ecf8; margin-left: 1.5rem; border-bottom-right-radius: 2px; }
+.sb-line--rahul .sb-who { background: var(--sb-indigo); }
+
+.sb-story {
+  margin: .3rem 0 0;
+  padding: .8rem 1rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--sb-ink-soft);
+  background: rgba(221,155,22,.16);
+  border-left: 4px solid var(--sb-gold);
+  border-radius: 0 8px 8px 0;
+  max-width: 36em;
+}
+
+.sb-route {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .7rem;
+}
+.sb-route li {
+  padding: .6rem .9rem;
+  border: 2px dashed var(--sb-green);
+  border-radius: 8px;
+  line-height: 1.5;
+}
+.sb-route li span { display: block; font-family: var(--sb-display); color: var(--sb-green); }
+
+/* ---------- Buttons ---------- */
+.sb-actions { display: flex; flex-wrap: wrap; gap: .8rem; }
+.sb-btn {
+  display: inline-block;
+  padding: .75rem 1.4rem;
+  font-family: var(--sb-display);
+  font-size: 1.05rem;
+  color: #fff7e2;
+  background: var(--sb-red);
+  border: 2px solid #7d1c0e;
+  border-radius: 999px;
+  box-shadow: 0 3px 0 #7d1c0e;
+  text-decoration: none;
+  cursor: pointer;
+  align-self: flex-start;
+}
+.sb-btn:hover { background: #cc3a25; }
+.sb-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #7d1c0e; }
+.sb-btn--ghost {
+  color: var(--sb-indigo);
+  background: transparent;
+  border-color: var(--sb-indigo);
+  box-shadow: 0 3px 0 var(--sb-indigo);
+}
+.sb-btn--ghost:hover { background: rgba(39,56,107,.1); }
+.sb-link {
+  align-self: flex-start;
+  padding: 0;
+  font: inherit;
+  font-style: italic;
+  color: var(--sb-ink-soft);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------- Controls ---------- */
+.sb-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.8rem;
+}
+.sb-turn {
+  width: 48px;
+  height: 48px;
+  font-size: 1.8rem;
+  line-height: 1;
+  color: var(--sb-ink);
+  background: var(--sb-gold);
+  border: 2px solid #7a4a22;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.sb-turn:hover:not(:disabled) { background: #f1b43a; }
+.sb-turn:disabled { opacity: .35; cursor: default; }
+
+.sb-dots {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.sb-dots button {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--sb-gold);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.sb-dots button[aria-current="true"] { background: var(--sb-gold); transform: scale(1.25); }
+
+.sb-counter {
+  margin: .8rem 0 0;
+  text-align: center;
+  font-style: italic;
+  color: #e8cf98;
+}
+.sb-footer {
+  padding: 1rem;
+  text-align: center;
+  color: #e8cf98;
+  background: rgba(20,10,3,.55);
+  border-top: 2px solid var(--sb-gold);
+}
+
+.sb-body button:focus-visible,
+.sb-body a:focus-visible { outline: 3px solid var(--sb-indigo); outline-offset: 3px; }
+.sb-controls button:focus-visible { outline-color: #fff; }
+
+/* ---------- Page-turn animation ---------- */
+@keyframes sbTurnNext {
+  from { transform: rotateY(-80deg); opacity: .2; }
+  to   { transform: rotateY(0);      opacity: 1; }
+}
+@keyframes sbTurnPrev {
+  from { transform: rotateY(60deg);  opacity: .2; }
+  to   { transform: rotateY(0);      opacity: 1; }
+}
+@keyframes sbFade { from { opacity: 0; } to { opacity: 1; } }
+
+.sb-spread.sb-go-next .sb-page--text { animation: sbTurnNext .7s ease both; }
+.sb-spread.sb-go-prev .sb-page--text { animation: sbTurnPrev .7s ease both; }
+.sb-spread.sb-go-next .sb-page--art,
+.sb-spread.sb-go-prev .sb-page--art  { animation: sbFade .7s ease both; }
+
+/* ---------- Mobile: picture on top, text below ---------- */
+@media (max-width: 800px) {
+  .sb-spread { grid-template-columns: 1fr; min-height: 0; }
+  .sb-spread::after { display: none; }
+  .sb-page--art  { border-radius: 10px 10px 0 0; padding-bottom: .6rem; }
+  .sb-page--text { border-radius: 0 0 10px 10px; }
+  .sb-topbar { justify-content: center; text-align: center; }
+  .sb-topnav { justify-content: center; }
+  .sb-dots { max-width: 220px; }
+  .sb-line--anand { margin-right: .5rem; }
+  .sb-line--rahul { margin-left: .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sb-spread.sb-go-next .sb-page--text,
+  .sb-spread.sb-go-prev .sb-page--text,
+  .sb-spread.sb-go-next .sb-page--art,
+  .sb-spread.sb-go-prev .sb-page--art { animation: none; }
+}
+
+
+/* =====================================================================
+   KANNADA JOURNEY: EXTRA STORYBOOK STYLES FOR THE OTHER PAGES
+   Paste this at the very END of styles.css, AFTER the storybook-styles.css
+   block you already added for the Programs page.
+   (Home, Who It's For, How It Works, Everyday Kannada, About)
+   ===================================================================== */
+
+/* A third speaker: guests such as Meera, Arjun, Sofia and Neha */
+.sb-line--guest { background: #e6f1df; margin-left: 1.5rem; border-bottom-right-radius: 2px; }
+.sb-line--guest .sb-who { background: var(--sb-green); }
+
+.sb-lead strong { color: var(--sb-green); font-family: var(--sb-display); font-weight: 400; }
+
+/* ---------- Three little cards ---------- */
+.sb-cards { display: grid; gap: .6rem; max-width: 36em; }
+.sb-card {
+  padding: .6rem .9rem .7rem;
+  background: #fff7e2;
+  border: 2px dashed var(--sb-green);
+  border-radius: 10px;
+}
+.sb-card__title {
+  margin: 0 0 .15rem;
+  font-family: var(--sb-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--sb-red);
+}
+.sb-card p { margin: 0; font-size: .94rem; line-height: 1.5; }
+
+/* ---------- Tab-like chips that jump to a page ---------- */
+.sb-tabs { display: flex; flex-wrap: wrap; gap: .5rem; max-width: 36em; }
+.sb-tab {
+  padding: .45rem .9rem;
+  font: inherit;
+  font-size: .9rem;
+  color: var(--sb-indigo);
+  background: #fff7e2;
+  border: 2px solid var(--sb-indigo);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.sb-tab:hover { background: var(--sb-indigo); color: #fff7e2; }
+
+/* ---------- Two lists side by side ---------- */
+.sb-twocol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+  max-width: 38em;
+}
+.sb-list {
+  padding: .6rem .8rem;
+  background: rgba(68,112,58,.09);
+  border-left: 4px solid var(--sb-green);
+  border-radius: 0 8px 8px 0;
+}
+.sb-list__title {
+  margin: 0 0 .3rem;
+  font-family: var(--sb-display);
+  font-weight: 400;
+  font-size: .95rem;
+  color: var(--sb-green);
+}
+.sb-list ul { margin: 0; padding-left: 1.1rem; }
+.sb-list li { margin-bottom: .25rem; font-size: .88rem; line-height: 1.45; }
+
+/* ---------- Kannada phrase chips (Everyday Kannada) ---------- */
+.sb-phrases {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-width: 36em;
+}
+.sb-phrase {
+  padding: .5rem .7rem;
+  background: #fff7e2;
+  border: 2px solid var(--sb-gold);
+  border-radius: 10px;
+  line-height: 1.3;
+}
+.sb-phrase__kn { display: block; font-size: 1.1rem; font-weight: 600; color: var(--sb-indigo); }
+.sb-phrase__en { display: block; font-size: .82rem; font-style: italic; color: var(--sb-ink-soft); }
+
+@media (max-width: 800px) {
+  .sb-twocol { grid-template-columns: 1fr; }
+  .sb-line--guest { margin-left: .5rem; }
+}
+@media (max-width: 420px) {
+  .sb-phrases { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
+   CONTACT PAGE: the enquiry form
+   ===================================================================== */
+.sb-form { display: grid; gap: .7rem; max-width: 38em; }
+.sb-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+.sb-field { display: grid; gap: .2rem; }
+.sb-field label {
+  font-family: var(--sb-display);
+  font-size: .88rem;
+  color: var(--sb-green);
+}
+.sb-field input,
+.sb-field select,
+.sb-field textarea {
+  width: 100%;
+  padding: .5rem .65rem;
+  font: inherit;
+  font-size: .95rem;
+  color: var(--sb-ink);
+  background: #fffaf0;
+  border: 2px solid var(--sb-ink-soft);
+  border-radius: 8px;
+}
+.sb-field textarea { min-height: 4.2rem; resize: vertical; }
+.sb-field input:focus,
+.sb-field select:focus,
+.sb-field textarea:focus { outline: 3px solid var(--sb-gold); outline-offset: 1px; border-color: var(--sb-red); }
+
+/* Spam trap: hidden from people, visible to simple bots */
+.sb-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+.sb-consent { margin: 0; font-size: .82rem; line-height: 1.45; color: var(--sb-ink-soft); }
+.sb-status { margin: 0; padding: .6rem .9rem; border-radius: 8px; line-height: 1.5; }
+.sb-status:empty { display: none; }
+.sb-status--info  { background: rgba(221,155,22,.18); border-left: 4px solid var(--sb-gold); }
+.sb-status--ok    { background: rgba(68,112,58,.16);  border-left: 4px solid var(--sb-green); }
+.sb-status--error { background: rgba(181,48,29,.14);  border-left: 4px solid var(--sb-red); }
+.sb-btn:disabled { opacity: .6; cursor: default; }
+
+@media (max-width: 560px) {
+  .sb-form__row { grid-template-columns: 1fr; }
+}
+
+/* =====================================================================
+   PROGRAMS PAGE: Anand's slate, taglines and "what you will learn" lists
+   ===================================================================== */
+.sb-tagline {
+  margin: 0;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--sb-red);
+}
+.sb-subhead {
+  margin: .3rem 0 0;
+  font-family: var(--sb-display);
+  font-weight: 400;
+  font-size: 1.05rem;
+  color: var(--sb-green);
+}
+.sb-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: .4rem;
+  max-width: 36em;
+}
+.sb-bullets li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: .95rem;
+  line-height: 1.5;
+}
+.sb-bullets li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--sb-gold);
+}
+.sb-btn--small { padding: .5rem 1.1rem; font-size: .95rem; }
+
+/* The chalk slate Anand uses to show examples */
+.sb-slate {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.1rem 1.3rem 1.3rem;
+  color: #f6efd9;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255,255,255,.06), transparent 50%),
+    #2b312c;
+  border: 10px solid #7a4a22;
+  border-radius: 10px;
+  box-shadow: inset 0 0 30px rgba(0,0,0,.55), 0 6px 16px rgba(58,34,16,.35);
+}
+.sb-slate__title {
+  margin: 0;
+  font-family: var(--sb-display);
+  font-size: 1.3rem;
+  color: #f4d27a;
+}
+.sb-slate__sub {
+  margin: .1rem 0 .7rem;
+  font-style: italic;
+  font-size: .9rem;
+  color: #cfc9b0;
+}
+.sb-slate__list { margin: 0; padding: 0; list-style: none; display: grid; gap: .1rem; }
+.sb-slate__list li { padding: .4rem 0; border-bottom: 1px dashed rgba(246,239,217,.28); }
+.sb-slate__list li:last-child { border-bottom: 0; }
+.sb-slate__kn { display: block; font-size: 1.15rem; font-weight: 600; line-height: 1.4; }
+.sb-slate__en { display: block; font-size: .86rem; font-style: italic; color: #e8d79a; }
+
+.sb-slate__note {
+  margin: .8rem 0 0;
+  font-size: .8rem;
+  font-style: italic;
+  color: #cfc9b0;
+}

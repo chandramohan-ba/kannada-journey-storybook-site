@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Kannada Journey</title>
+  <meta name="description" content="Learn about the purpose and approach behind Kannada Journey.">
+
+  <!-- Fonts for the storybook look (Kannada + vintage display). Remove if your styles.css already loads fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Kannada:wght@400;600;800&family=Yatra+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="sb-body">
+
+  <!-- Top bar. If you prefer your existing site header, replace this block with it. -->
+  <header class="sb-topbar">
+    <a class="sb-brand" href="index.html">Kannada Journey</a>
+    <nav class="sb-topnav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="programs.html">Programs</a>
+      <a href="who-its-for.html">Who It’s For</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="everyday-kannada.html">Everyday Kannada</a>
+      <a href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="sb-stage">
+    <div class="sb-book" id="sbBook" tabindex="-1">
+
+      <!-- ============ THE HOUSE ============ -->
+      <section class="sb-spread" data-title="The house">
+        <div class="sb-page sb-page--art">
+          <div class="sb-art" data-slot="about0" data-alt="Anand stands in the doorway of a small house with a lamp lit on each side and a sign reading Kannada Payana, Kannada Journey, while Rahul arrives">
+            <p class="sb-art__fallback">The picture goes here. If you only see this message, upload <strong>storybook.js</strong> next to this page.</p>
+          </div>
+        </div>
+        <div class="sb-page sb-page--text sb-page--cover">
+          <h1 class="sb-title">About Kannada Journey</h1>
+          <p class="sb-lead">Kannada Journey is a practical learning pathway for people who want more than textbook phrases: to speak, understand, and feel more connected in everyday life in Karnataka.</p>
+          <div class="sb-scroll">
+            <p class="sb-scroll__label">Narrator Scroll</p>
+            <p>At the end of the lane stands a small house with a lamp always lit. This is where the journey begins.</p>
+          </div>
+          <div class="sb-dialogue">
+            <div class="sb-line sb-line--anand"><span class="sb-who">Anand</span><p>“Welcome. Kannada Journey is for people who want more than textbook phrases.”</p></div>
+            <div class="sb-line sb-line--rahul"><span class="sb-who">Rahul</span><p>“I once memorised phrases for months and still couldn’t talk to my neighbour.”</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OUR APPROACH ============ -->
+      <section class="sb-spread" data-title="Our approach">
+        <div class="sb-page sb-page--art">
+          <div class="sb-art" data-slot="about1" data-alt="A tree whose roots are labelled Simple spoken patterns and whose crown is labelled Deeper understanding, with Anand watering it and Rahul looking up">
+            <p class="sb-art__fallback">The picture goes here. If you only see this message, upload <strong>storybook.js</strong> next to this page.</p>
+          </div>
+        </div>
+        <div class="sb-page sb-page--text">
+          <h2 class="sb-heading">Our approach</h2>
+          <p class="sb-lead">Begin with simple spoken patterns and grow toward deeper understanding and expression. Language becomes meaningful when it helps people connect.</p>
+          <div class="sb-dialogue">
+            <div class="sb-line sb-line--anand"><span class="sb-who">Anand</span><p>“See the tree? Its roots are simple spoken patterns. Understanding and expression grow from them.”</p></div>
+            <div class="sb-line sb-line--rahul"><span class="sb-who">Rahul</span><p>“So the words only matter when they connect me to someone.”</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GET IN TOUCH ============ -->
+      <section class="sb-spread" data-title="Get in touch" id="join">
+        <div class="sb-page sb-page--art">
+          <div class="sb-art" data-slot="finale" data-alt="The village gate with a welcoming lamp, and Anand and Rahul waving">
+            <p class="sb-art__fallback">The picture goes here. If you only see this message, upload <strong>storybook.js</strong> next to this page.</p>
+          </div>
+        </div>
+        <div class="sb-page sb-page--text sb-page--cover">
+          <h2 class="sb-heading">Walk with us.</h2>
+          <p class="sb-lead">From first words to real belonging.</p>
+          <div class="sb-actions">
+            <a class="sb-btn" href="contact.html">Get in touch</a>
+            <a class="sb-btn sb-btn--ghost" href="programs.html">Explore programs</a>
+          </div>
+          <button class="sb-link" type="button" data-sb-first>Read the story again</button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Controls -->
+    <nav class="sb-controls" aria-label="Storybook pages">
+      <button class="sb-turn" type="button" data-sb-prev aria-label="Previous page">‹</button>
+      <ol class="sb-dots" id="sbDots"></ol>
+      <button class="sb-turn" type="button" data-sb-next aria-label="Next page">›</button>
+    </nav>
+    <p class="sb-counter" id="sbCounter" aria-live="polite"></p>
+  </main>
+
+  <footer class="sb-footer">Kannada Journey · From first words to real belonging.</footer>
+
+  <script src="storybook.js"></script>
+</body>
+</html>

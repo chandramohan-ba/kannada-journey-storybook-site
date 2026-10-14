@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Kannada Journey</title>
+  <meta name="description" content="Enquire about joining Kannada Journey.">
+
+  <!-- Fonts for the storybook look (Kannada + vintage display). Remove if your styles.css already loads fonts. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Noto+Serif+Kannada:wght@400;600;800&family=Yatra+One&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="sb-body">
+
+  <!-- Top bar. If you prefer your existing site header, replace this block with it. -->
+  <header class="sb-topbar">
+    <a class="sb-brand" href="index.html">Kannada Journey</a>
+    <nav class="sb-topnav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="programs.html">Programs</a>
+      <a href="who-its-for.html">Who It’s For</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="everyday-kannada.html">Everyday Kannada</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main class="sb-stage">
+    <div class="sb-book" id="sbBook" tabindex="-1">
+
+      <!-- ============ THE GUEST BOOK ============ -->
+      <section class="sb-spread" data-title="The guest book">
+        <div class="sb-page sb-page--art">
+          <div class="sb-art" data-slot="contact0" data-alt="Rahul signs the guest book on a table at the door of a house while Anand asks his name in Kannada">
+            <p class="sb-art__fallback">The picture goes here. If you only see this message, upload <strong>storybook.js</strong> next to this page.</p>
+          </div>
+        </div>
+        <div class="sb-page sb-page--text sb-page--cover">
+          <h1 class="sb-title">Start your Kannada Journey</h1>
+          <p class="sb-lead">Tell us a little about yourself and what you would like to learn.</p>
+          <div class="sb-scroll">
+            <p class="sb-scroll__label">Narrator Scroll</p>
+            <p>Before every journey, Anand asks each traveller to sign the guest book at the door.</p>
+          </div>
+          <div class="sb-dialogue">
+            <div class="sb-line sb-line--anand"><span class="sb-who">Anand</span><p>“Before we begin, tell me who is walking this road.”</p></div>
+            <div class="sb-line sb-line--rahul"><span class="sb-who">Rahul</span><p>“I’ll sign my name, and then tell you what I hope to learn.”</p></div>
+          </div>
+          <button class="sb-btn sb-btn--start" type="button" data-sb-next>Sign the guest book</button>
+        </div>
+      </section>
+
+      <!-- ============ ENQUIRY FORM ============ -->
+      <section class="sb-spread" data-title="Enquiry form">
+        <div class="sb-page sb-page--art">
+          <div class="sb-art" data-slot="finale" data-alt="The village gate with a welcoming lamp, and Anand and Rahul waving">
+            <p class="sb-art__fallback">The picture goes here. If you only see this message, upload <strong>storybook.js</strong> next to this page.</p>
+          </div>
+        </div>
+        <div class="sb-page sb-page--text">
+          <h2 class="sb-heading">Sign the guest book</h2>
+          <form class="sb-form" id="sbEnquiry" action="#" method="post" novalidate>
+            <div class="sb-form__row"><div class="sb-field"><label for="sb-name">Full name</label><input id="sb-name" name="name" type="text" required autocomplete="name"></div><div class="sb-field"><label for="sb-email">Email address</label><input id="sb-email" name="email" type="email" required autocomplete="email"></div></div>
+            <div class="sb-form__row"><div class="sb-field"><label for="sb-phone">Phone (optional)</label><input id="sb-phone" name="phone" type="tel" autocomplete="tel"></div><div class="sb-field"><label for="sb-role">I am a</label><select id="sb-role" name="role" required><option value="" disabled selected>Select one</option><option>Medical/Nursing student</option><option>Yoga practitioner</option><option>IT professional</option><option>New learner</option><option>Other</option></select></div></div>
+            <div class="sb-form__row"><div class="sb-field"><label for="sb-level">Current Kannada level</label><select id="sb-level" name="level" required><option value="" disabled selected>Select one</option><option>Complete beginner</option><option>Some knowledge</option><option>Understand but cannot speak</option><option>Other</option></select></div><div class="sb-field"><label for="sb-mode">Preferred mode</label><select id="sb-mode" name="mode"><option>Not sure</option><option>Online</option><option>Offline</option><option>Either</option></select></div></div>
+            <div class="sb-field"><label for="sb-goal">What would you like to achieve?</label><textarea id="sb-goal" name="goal" rows="3" required></textarea></div>
+            <div class="sb-field"><label for="sb-message">Additional message</label><textarea id="sb-message" name="message" rows="3"></textarea></div>
+            <div class="sb-hp" aria-hidden="true"><label for="sb-website">Website</label><input id="sb-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+            <p class="sb-consent">By submitting, you agree to be contacted about your enquiry. Do not send sensitive medical or personal information.</p>
+            <button class="sb-btn" type="submit">Send enquiry</button>
+            <p class="sb-status" id="sbEnquiryStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Controls -->
+    <nav class="sb-controls" aria-label="Storybook pages">
+      <button class="sb-turn" type="button" data-sb-prev aria-label="Previous page">‹</button>
+      <ol class="sb-dots" id="sbDots"></ol>
+      <button class="sb-turn" type="button" data-sb-next aria-label="Next page">›</button>
+    </nav>
+    <p class="sb-counter" id="sbCounter" aria-live="polite"></p>
+  </main>
+
+  <footer class="sb-footer">Kannada Journey · From first words to real belonging.</footer>
+
+  <script src="storybook.js"></script>
+</body>
+</html>
